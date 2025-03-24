@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status
 import uvicorn
-from routes import diabetes, auth, users
-from database import engine, Base
+from .routes import diabetes, auth, users
+from .database import engine, Base
 
 
 app = FastAPI(

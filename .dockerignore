@@ -1,0 +1,24 @@
+# Ignore virtual environments
+venv/
+
+# Ignore local logs and cache
+__pycache__/
+*.log
+*.md
+.gitignore
+
+
+
+# Ignore database files
+
+
+# Ignore model checkpoints (if unnecessary)
+saved_models/
+Non_related/
+model_preparation/
+
+# Ignore system files
+.DS_Store
+.idea/
+.vscode/
+venv/

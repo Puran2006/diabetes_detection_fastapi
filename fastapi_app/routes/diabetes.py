@@ -1,11 +1,12 @@
 from fastapi import FastAPI, APIRouter, status, Depends, HTTPException
 import logging
 import pickle
-from schemas.diabetes import DiabetesInput, PredictionResponse, ChatRequest
+from ..schemas.diabetes import DiabetesInput, PredictionResponse, ChatRequest
 import numpy as np
-from utils import get_current_user
-from schemas.user import UserResponse
+from ..utils import get_current_user
+from ..schemas.user import UserResponse
 import requests
+from pathlib import Path
 
 # setting Up Logginf files
 logging.basicConfig(
@@ -18,15 +19,20 @@ logger = logging.getLogger(__name__)  # Create a logger instance
 
 # Hugging Face API settings
 HF_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
-HF_API_KEY = "your_hugging_face_api_access_token"
+HF_API_KEY = "Your_Hugging_face_api_acces_token"
 
+
+# Get the absolute path of the current file (diabetes.py)
+BASE_DIR = Path(__file__).resolve().parent.parent
+# Construct the model path
+MODEL_PATH = BASE_DIR / "diabetes_model.pkl"
 
 # fast api
 app = FastAPI()
 
 #Loading our model
 try:
-    with open("diabetes_model.pkl", "rb") as model_file:
+    with open(MODEL_PATH, "rb") as model_file:
         model = pickle.load(model_file)
     logger.info("Model loaded successfully!")
 except Exception as e:

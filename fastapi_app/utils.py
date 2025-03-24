@@ -4,13 +4,13 @@ from jose import jwt, JWTError
 from datetime import datetime, timedelta
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
-from models.user import User
-from schemas.user import UserResponse
-from database import get_db
+from .models.user import User
+from .schemas.user import UserResponse
+from .database import get_db
 
 
 # Secret Key (Keep it secure in a real project)
-SECRET_KEY = "Your_secret_key" # generate the secret key using the code secret_key.py in the same folder
+SECRET_KEY = "your_secret_key_here" # generate the secret key using the code secret_key.py
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
