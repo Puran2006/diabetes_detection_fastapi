@@ -4,3 +4,4 @@ __pycache__/
 *.pyo
 *.db
 app.log
+Non_related/
